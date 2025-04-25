@@ -1,8 +1,9 @@
 import { type Metadata } from "next";
-import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +29,15 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
         >
-          <div className="hidden md:flex h-full w-full flex-col fixed inset-y-0 z-50">
-            <Navbar />
+          <div className="h-[80px] md:pl-56 fixed inset-y-0 w-full z-50">
+            <Navbar/>
           </div>
-          <main className="mt-18">
+          <div className="hidden md:flex h-full w-56 flex-col fixed inset-y-0 z-50 transition-all">
+            <Sidebar />
+          </div>
+          <main className="md:pl-56 h-full">
             {children}
           </main>
         </body>
