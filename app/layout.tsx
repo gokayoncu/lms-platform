@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import ToastProvider from "@/components/provider/toast-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,8 @@ export default function RootLayout({
           <div className="hidden md:flex h-full w-56 flex-col fixed inset-y-0 z-50 transition-all">
             <Sidebar />
           </div>
-          <main className="md:pl-56 h-full">
+          <main className="md:pl-56 pt-[80px] h-full">
+            <ToastProvider/>
             {children}
           </main>
         </body>
